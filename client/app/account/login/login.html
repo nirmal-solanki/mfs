@@ -1,0 +1,36 @@
+<div ng-include="'components/shell/shell.html'"></div>
+<md-content class="md-padding">
+    <md-card class="login-card">
+        <md-card-content>
+            <h2 layout="row" layout-align="center center">Login</h2>
+            <div layout="row" layout-align="center center">
+                <md-button class="md-fab md-mini md-warn" aria-label="Comment" ng-click="loginOauth('google')">
+                    <md-icon class="md-accent m-t-15" md-font-set="fa fa-lg fa-fw fa-google-plus"></md-icon>
+                </md-button>
+            </div>
+            <form name="form" ng-submit="login(form)" novalidate>
+                <md-input-container class="md-icon-float md-block">
+                    <label>Email</label>
+                    <md-icon class="md-primary" md-font-set="fa fa-lg fa-fw fa-envelope m-t-5"></md-icon>
+                    <input required type="email" name="email" ng-model="user.email">
+                    <div ng-messages="form.email.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-icon-float md-block">
+                    <label>Password</label>
+                    <md-icon class="md-primary" md-font-set="fa fa-lg fa-fw fa-lock m-t-5"></md-icon>
+                    <input required type="password" name="password" ng-model="user.password">
+
+                    <div ng-messages="form.password.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+                <div layout="row">
+                    <md-button class="md-raised md-primary" type="submit">Login</md-button>
+                    <md-button ui-sref="signup">Register</md-button>
+                </div>
+            </form>
+        </md-card-content>
+    </md-card>
+</md-content>
