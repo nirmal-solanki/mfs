@@ -3,10 +3,10 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var MedicinesSchema = new Schema({
+var MedicineSchema = new Schema({
   name: String,
   info: String,
   active: Boolean
 });
 
-module.exports = mongoose.model('Medicines', MedicinesSchema);
+module.exports = mongoose.model('Medicine', MedicineSchema);

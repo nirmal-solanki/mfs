@@ -4,21 +4,21 @@
 
 'use strict';
 
-var Medicines = require('./medicines.model');
+var Medicine = require('./medicine.model');
 
 exports.register = function(socket) {
-  Medicines.schema.post('save', function (doc) {
+  Medicine.schema.post('save', function (doc) {
     onSave(socket, doc);
   });
-  Medicines.schema.post('remove', function (doc) {
+  Medicine.schema.post('remove', function (doc) {
     onRemove(socket, doc);
   });
 }
 
 function onSave(socket, doc, cb) {
-  socket.emit('medicines:save', doc);
+  socket.emit('medicine:save', doc);
 }
 
 function onRemove(socket, doc, cb) {
-  socket.emit('medicines:remove', doc);
+  socket.emit('medicine:remove', doc);
 }

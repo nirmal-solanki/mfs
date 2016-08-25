@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('medsmindApp')
-    .controller('DialogController', function ($scope, $mdDialog, MedicinesService) {
+    .controller('AddMedicineDialogController', function ($scope, $mdDialog, MedicinesService) {
         $scope.fnCloseDialog = function () {
             $mdDialog.hide();
         };

@@ -6,7 +6,7 @@ angular.module('medsmindApp')
     $mdDialog.hide();
   };
 
-  
+
   $scope.addThing = function() {
     if($scope.newThing === '') {
       return;

@@ -6,8 +6,8 @@ angular.module('medsmindApp')
 
         $scope.fnShowAdvanced = function (ev) {
             $mdDialog.show({
-                    controller: 'DialogController',
-                    templateUrl: 'app/medicines/dialog/dialog.html',
+                    controller: 'AddMedicineDialogController',
+                    templateUrl: 'app/medicines/dialog/addMedicine/addMedicine.html',
                     parent: angular.element(document.body),
                     targetEvent: ev,
                 })
