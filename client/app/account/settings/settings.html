@@ -1,6 +1,37 @@
 <div ng-include="'components/shell/shell.html'"></div>
+<md-content class="md-padding">
+    <md-card class="login-card">
+        <md-card-content>
+            <h2 layout="row" layout-align="center center">Change Password</h2>
+            <form name="changePasswordForm" ng-submit="changePassword(changePasswordForm)" novalidate>
+                <md-input-container class="md-icon-float md-block">
+                    <label>Old Password</label>
+                    <md-icon class="md-primary" md-font-set="fa fa-lg fa-fw fa-lock m-t-5"></md-icon>
+                    <input type="password" name="oldPassword" ng-model="user.oldPassword" required>
 
-<div class="container">
+                    <div ng-messages="changePasswordForm.oldPassword.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-icon-float md-block">
+                    <label>New Password</label>
+                    <md-icon class="md-primary" md-font-set="fa fa-lg fa-fw fa-lock m-t-5"></md-icon>
+                    <input type="password" name="newPassword" class="form-control"
+                           ng-model="user.newPassword" ng-minlength="3" required/>
+
+
+                    <div ng-messages="changePasswordForm.newPassword.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+                <div layout="row">
+                    <md-button class="md-raised md-primary" type="submit">Save changes</md-button>
+                </div>
+            </form>
+        </md-card-content>
+    </md-card>
+</md-content>
+<!--<div class="container">
     <div class="row">
         <div class="col-sm-12">
             <h1>Change Password</h1>
@@ -38,4 +69,4 @@
             </form>
         </div>
     </div>
-</div>
+</div>-->
