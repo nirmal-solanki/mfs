@@ -1,17 +1,26 @@
 <div ng-include="'components/shell/shell.html'"></div>
 
-<md-grid-list class="things-list" md-cols-sm="1" md-cols-md="2" md-cols-gt-md="5"
-              md-row-height-gt-md="1:1" md-row-height="4:3"
-              md-gutter="8px" md-gutter-gt-sm="4px">
-    <md-grid-tile ng-repeat="thing in awesomeThings" ng-class="getColor($index)" md-rowspan="{{getSpan($index)}}"
-                  md-colspan="{{getSpan($index)}}"
-                  md-colspan-sm="1">
+<md-card>
+    <md-card-header>
+        <md-card-avatar>
+            <img src="https://cdn.vectorstock.com/i/composite/65,64/traditional-medicine-logo-vector-4286564.jpg"/>
+        </md-card-avatar>
+        <md-card-header-text>
+            <span class="md-title">Medsmind</span>
+            <span class="md-subhead">A drug or other preparation for the treatment or prevention of disease.</span>
+        </md-card-header-text>
+    </md-card-header>
+    <img ng-src="http://thcforptsd.com/wordpress/wp-content/uploads/2015/12/medical-hd-photo-1080p-hdwallwide.com_.jpg" class="md-card-image" alt="Washed Out">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Medsmind</span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+        <p>
+            The science or practice of the diagnosis, treatment, and prevention of disease (in technical use often taken to exclude surgery).
+            A drug or other preparation for the treatment or prevention of disease.
+        </p>
+    </md-card-content>
+</md-card>
 
-        <md-button aria-label="Remove item" class="md-icon-button delete-btn" ng-click="deleteThing(thing)">
-            <md-icon style="fill: #fff" md-svg-icon="action:delete"></md-icon>
-        </md-button>
-
-        <md-icon class="avatar-icon" md-svg-icon="avatar:svg-{{ ($index + 1) % 11 }}"></md-icon>
-        <md-grid-tile-footer><h3>{{thing.name}}</h3></md-grid-tile-footer>
-    </md-grid-tile>
-</md-grid-list>
