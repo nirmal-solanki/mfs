@@ -1,5 +1,5 @@
 <div ng-controller="ShellCtrl" class="main-shell">
-    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+    <md-sidenav class="md-sidenav-left md-whiteframe-2dp" md-component-id="left">
         <md-toolbar class="md-tall md-accent">
 
             <div ng-if="isLoggedIn()" layout="column" layout-padding class="profile-container">
@@ -11,13 +11,35 @@
             </div>
 
         </md-toolbar>
-        <md-content layout-padding>
+        <md-content>
+            <md-list ng-cloak flex>
+                <md-list-item ui-sref="dashboard">
+                    <ng-md-icon icon="dashboard" size="20"></ng-md-icon>
+                    <p>Dashboard</p>
+                </md-list-item>
+            </md-list>
+            <md-divider></md-divider>
+
+            <md-list ng-cloak flex>
+                <md-list-item ui-sref="medicines">
+                    <ng-md-icon icon="queue" size="20"></ng-md-icon>
+                    <p>Medicines</p>
+                </md-list-item>
+            </md-list>
+            <md-divider></md-divider>
+
+            <md-list ng-cloak flex>
+                <md-list-item ui-sref="medications">
+                    <ng-md-icon icon="note_add" size="20"></ng-md-icon>
+                    <p>Medications</p>
+                </md-list-item>
+            </md-list>
 
         </md-content>
     </md-sidenav>
-    <md-toolbar>
+    <md-toolbar class="md-whiteframe-2dp">
         <div class="md-toolbar-tools">
-            <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="Settings"  ng-if="isLoggedIn()">
+            <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="Settings" ng-if="isLoggedIn()">
                 <md-icon md-svg-icon="assets/icons/menu.svg"></md-icon>
             </md-button>
             <h2 ui-sref="main"><a href="javascript:void(0);">Medsmind</a></h2>
@@ -33,7 +55,7 @@
                 </md-button>
                 <md-menu-content width="4">
                     <md-menu-item>
-                        <md-button>
+                        <md-button ui-sref="seting">
                             <md-icon md-font-set="fa fa-lg fa-fw fa-cog"></md-icon>
                             Settings
                         </md-button>

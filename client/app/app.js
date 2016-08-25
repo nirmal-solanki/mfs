@@ -1,15 +1,23 @@
 'use strict';
 
-angular.module('medsmindApp', [
-    'ngCookies',
-    'ngResource',
-    'ngSanitize',
-    'ngAnimate',
-    'ngMessages',
-    'btford.socket-io',
-    'ui.router',
-    'ngMaterial'
-])
+angular
+    .module('medsmindApp', [
+        'ngCookies',
+        'ngResource',
+        'ngSanitize',
+        'ngAnimate',
+        'ngMessages',
+        'btford.socket-io',
+        'ui.router',
+        'ngMaterial',
+        'ngMdIcons'
+    ])
+
+    .config(function ($mdThemingProvider) {
+        $mdThemingProvider.theme('default')
+            .primaryPalette('blue')
+            .accentPalette('pink');
+    })
     .config(function ($mdIconProvider) {
         $mdIconProvider
             .iconSet('action', '../assets/iconsets/action-icons.svg', 24)

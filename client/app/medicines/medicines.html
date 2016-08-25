@@ -1,0 +1,83 @@
+<div ng-include="'components/shell/shell.html'"></div>
+
+<md-content ng-cloak>
+    <md-toolbar class="md-whiteframe-2dp" style="background: #cdcdcd; color: #000;">
+        <div class="md-toolbar-tools">
+            <h2 ui-sref="main"><a href="javascript:void(0);">Medicines</a></h2>
+            <span flex=""></span>
+
+            <md-button class="md-fab md-mini md-primary" aria-label="Favorite" ng-click="fnShowAdvanced($event)">
+                <md-tooltip md-direction="left">
+                    Add Medicine
+                </md-tooltip>
+                <md-icon md-font-set="fa fa-2x fa-plus"></md-icon>
+            </md-button>
+
+        </div>
+    </md-toolbar>
+
+    <div layout="column" layout-fill>
+        <md-content style="height: 500px;" md-theme="altTheme">
+            <section>
+                <md-subheader class="md-primary">Unread Messages</md-subheader>
+                <md-list layout-padding>
+                    <md-list-item class="md-3-line" ng-repeat="message in messages">
+
+                        <div class="md-list-item-text">
+                            <h3>{{message.what}}</h3>
+                            <h4>{{message.who}}</h4>
+                            <p>
+                                {{message.notes}}
+                            </p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </section>
+            <section>
+                <md-subheader class="md-warn">Late Messages</md-subheader>
+                <md-list layout="column" layout-padding>
+                    <md-list-item class="md-3-line" ng-repeat="message in messages">
+
+                        <div class="md-list-item-text">
+                            <h3>{{message.what}}</h3>
+                            <h4>{{message.who}}</h4>
+                            <p>
+                                {{message.notes}}
+                            </p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </section>
+            <section>
+                <md-subheader>Read Messages</md-subheader>
+                <md-list layout="column" layout-padding>
+                    <md-list-item class="md-3-line" ng-repeat="message in messages">
+
+                        <div class="md-list-item-text">
+                            <h3>{{message.what}}</h3>
+                            <h4>{{message.who}}</h4>
+                            <p>
+                                {{message.notes}}
+                            </p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </section>
+            <section>
+                <md-subheader class="md-accent">Archived messages</md-subheader>
+                <md-list layout="column" layout-padding>
+                    <md-list-item class="md-3-line" ng-repeat="message in messages">
+
+                        <div class="md-list-item-text">
+                            <h3>{{message.what}}</h3>
+                            <h4>{{message.who}}</h4>
+                            <p>
+                                {{message.notes}}
+                            </p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </section>
+        </md-content>
+    </div>
+</md-content>
