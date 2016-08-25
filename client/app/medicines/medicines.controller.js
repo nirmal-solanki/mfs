@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('medsmindApp')
-    .controller('MedicinesCtrl', function ($scope, $mdDialog, MedicinesService) {
+    .controller('MedicinesCtrl', function ($scope, $mdDialog, toastr, MedicinesService) {
         $scope.message = 'Hello';
 
         $scope.fnShowAdvanced = function (ev) {
@@ -99,10 +99,14 @@ angular.module('medsmindApp')
             }
         ];
 
-        $scope.fnInit = function () {
+        $scope.getMedicines = function(){
             MedicinesService.getMedicines()
                 .then(function (res) {
-                    console.log(res);
+                    $scope.medicines = res;
                 })
+        }
+
+        $scope.fnInit = function () {
+            $scope.getMedicines();
         }
     });

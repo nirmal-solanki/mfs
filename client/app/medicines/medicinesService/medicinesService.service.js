@@ -13,7 +13,7 @@ angular.module('medsmindApp')
                 $http.get('/api/medicines')
                     .then(function (result) {
 
-                        deferred.resolve(result);
+                        deferred.resolve(result.data);
                     }, function (error) {
                         deferred.reject(error);
                     });

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('medsmindApp')
-    .controller('AddMedicineDialogController', function ($scope, $mdDialog, MedicinesService) {
+    .controller('AddMedicineDialogController', function ($scope, $mdDialog, toastr, MedicinesService) {
         $scope.fnCloseDialog = function () {
             $mdDialog.hide();
         };
@@ -9,7 +9,10 @@ angular.module('medsmindApp')
         $scope.fnAddMedicine = function (medicine) {
             MedicinesService.addMedicines(medicine)
                 .then(function () {
-                    console.log('work');
+                    toastr.success('Medicine Added Successfully.');
+                    $mdDialog.hide();
+                }, function(){
+                    toastr.error('Medicine not Add');
                     $mdDialog.hide();
                 });
         };
