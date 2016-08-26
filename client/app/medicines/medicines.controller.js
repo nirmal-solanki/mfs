@@ -2,111 +2,43 @@
 
 angular.module('medsmindApp')
     .controller('MedicinesCtrl', function ($scope, $mdDialog, toastr, MedicinesService) {
-        $scope.message = 'Hello';
 
-        $scope.fnShowAdvanced = function (ev) {
+        $scope.fnShowAdvanced = function (ev, medicine) {
             $mdDialog.show({
-                    controller: 'AddMedicineDialogController',
-                    templateUrl: 'app/medicines/dialog/addMedicine/addMedicine.html',
-                    parent: angular.element(document.body),
-                    targetEvent: ev,
-                })
-                .then(function (answer) {
+                controller: 'AddMedicineDialogController',
+                templateUrl: 'app/medicines/dialog/addMedicine/addMedicine.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                resolve: {
+                    medicine: function () {
+                        return medicine;
+                    }
+                }
+            }).then(function (answer) {
+                $scope.fnGetMedicines();
+            }, function () {
 
-                }, function () {
+            });
+        };
 
+        $scope.fnGetMedicines = function () {
+            MedicinesService.list()
+                .then(function (res) {
+                    $scope.medicines = res;
                 });
         };
 
-        var imagePath = 'img/list/60.jpeg';
-        $scope.messages = [
-            {
-                face: imagePath,
-                what: 'Brunch this weekend?',
-                who: 'Min Li Chan',
-                when: '3:08PM',
-                notes: " I'll be in your neighborhood doing errands"
-            },
-            {
-                face: imagePath,
-                what: 'Brunch this weekend?',
-                who: 'Min Li Chan',
-                when: '3:08PM',
-                notes: " I'll be in your neighborhood doing errands"
-            },
-            {
-                face: imagePath,
-                what: 'Brunch this weekend?',
-                who: 'Min Li Chan',
-                when: '3:08PM',
-                notes: " I'll be in your neighborhood doing errands"
-            },
-            {
-                face: imagePath,
-                what: 'Brunch this weekend?',
-                who: 'Min Li Chan',
-                when: '3:08PM',
-                notes: " I'll be in your neighborhood doing errands"
-            },
-            {
-                face: imagePath,
-                what: 'Brunch this weekend?',
-                who: 'Min Li Chan',
-                when: '3:08PM',
-                notes: " I'll be in your neighborhood doing errands"
-            },
-            {
-                face: imagePath,
-                what: 'Brunch this weekend?',
-                who: 'Min Li Chan',
-                when: '3:08PM',
-                notes: " I'll be in your neighborhood doing errands"
-            },
-            {
-                face: imagePath,
-                what: 'Brunch this weekend?',
-                who: 'Min Li Chan',
-                when: '3:08PM',
-                notes: " I'll be in your neighborhood doing errands"
-            },
-            {
-                face: imagePath,
-                what: 'Brunch this weekend?',
-                who: 'Min Li Chan',
-                when: '3:08PM',
-                notes: " I'll be in your neighborhood doing errands"
-            },
-            {
-                face: imagePath,
-                what: 'Brunch this weekend?',
-                who: 'Min Li Chan',
-                when: '3:08PM',
-                notes: " I'll be in your neighborhood doing errands"
-            },
-            {
-                face: imagePath,
-                what: 'Brunch this weekend?',
-                who: 'Min Li Chan',
-                when: '3:08PM',
-                notes: " I'll be in your neighborhood doing errands"
-            },
-            {
-                face: imagePath,
-                what: 'Brunch this weekend?',
-                who: 'Min Li Chan',
-                when: '3:08PM',
-                notes: " I'll be in your neighborhood doing errands"
-            }
-        ];
-
-        $scope.getMedicines = function(){
-            MedicinesService.getMedicines()
-                .then(function (res) {
-                    $scope.medicines = res;
+        $scope.fnDeleteMedicines = function (id) {
+            MedicinesService.remove(id)
+                .then(function () {
+                    toastr.success('Medicine removed successfully.');
+                    $scope.fnGetMedicines();
+                }, function () {
+                    toastr.error('Medicine not remove');
                 })
-        }
+        };
 
         $scope.fnInit = function () {
-            $scope.getMedicines();
-        }
+            $scope.fnGetMedicines();
+        };
     });

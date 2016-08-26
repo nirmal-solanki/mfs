@@ -1,8 +1,8 @@
 <md-dialog aria-label="Mango (Fruit)" flex="60">
-    <form ng-cloak>
+    <form name="medicineForm" ng-submit="medicineForm.$valid && fnAddMedicine(medicine)" novalidate>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2>Add Medicine</h2>
+                <h2 ng-bind="medicine._id ? 'Update Medicine' : 'Add Medicine'"></h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="fnCloseDialog()" aria-label="close">
                     <ng-md-icon icon="close"></ng-md-icon>
@@ -10,24 +10,21 @@
             </div>
         </md-toolbar>
         <md-dialog-content layout="column" layout-padding>
-            <form name="projectForm">
                 <md-input-container class="md-block m-t-20">
                     <label>Enter medicine name</label>
-                    <input required name="name" ng-model="medicine.name">
-                    <div ng-messages="projectForm.description.$error">
+                    <input name="name" ng-model="medicine.name" required>
+                    <div ng-messages="medicineForm.name.$error">
                         <div ng-message="required">This is required.</div>
-                        <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
                     </div>
                 </md-input-container>
                 <md-input-container class="md-block">
                     <label>Description</label>
                     <textarea ng-model="medicine.info" md-maxlength="200" rows="3" md-select-on-focus></textarea>
-                </md-input-container
-            </form>
+                </md-input-container>
         </md-dialog-content>
         <md-dialog-actions layout="row">
             <span flex></span>
-            <md-button class="md-raised md-primary" ng-click="fnAddMedicine(medicine)" >Add</md-button>
+            <md-button type="submit" class="md-raised md-primary"><span ng-bind="medicine._id ? 'Update' : 'Add'"></span></md-button>
         </md-dialog-actions>
     </form>
 </md-dialog>
